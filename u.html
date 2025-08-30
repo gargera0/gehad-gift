@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>&#127918;</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background-color: #f0f0f0; }
+    input { padding: 10px; width: 200px; }
+    button { padding: 10px 20px; margin-left: 10px; }
+    .question { font-size: 24px; margin-bottom: 20px; }
+    .score { font-size: 20px; margin-top: 20px; color: blue; }
+    .reward { font-size: 20px; color: green; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<div class="question" id="question">امتا اكلنا كشري سوا ؟(D/M/Y)</div>
+<input type="text" id="answer" placeholder="ابهرني ">
+<button onclick="checkAnswer()">تحقق</button>
+
+<div class="score" id="score">نقاطك: 0</div>
+
+<script>
+let questions = [
+    { q: "امتا اكلنا كشري سوا ؟(D/M/Y)", a: "13/3/2023", reward: "next part of password IS B !" },
+    { q: "اسمك ايه ؟", a: "سما", reward: "next part of password is K !" },
+    { q: "هل في مجتمع مثالي ؟", a: "لا", reward: "last part of password is B !" }
+];
+
+let current = 0;
+let score = 0;
+
+function checkAnswer() {
+    let userAnswer = document.getElementById("answer").value.trim();
+    if (userAnswer.toLowerCase() === questions[current].a.toLowerCase()) {
+        score += 10; 
+        showReward(questions[current].reward); 
+        current++;
+        if (current < questions.length) {
+            document.getElementById("question").innerText = questions[current].q;
+            document.getElementById("answer").value = "";
+        } else {
+            document.getElementById("question").innerText = "🎉 أحسنت! انتهيت من جميع الأسئلة.";
+            document.getElementById("answer").style.display = "none";
+        }
+        document.getElementById("score").innerText = "نقاطك: " + score;
+    } else {
+        alert("حاول مرة أخرى!");
+    }
+}
+
+function showReward(message) {
+    let reward = document.createElement("div");
+    reward.className = "reward";
+    reward.innerText = message;
+    document.body.appendChild(reward);
+    setTimeout(() => reward.remove(), 5000);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>&#127918;</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+    input { padding: 8px; font-size: 16px; }
+    button { padding: 8px 16px; font-size: 16px; cursor: pointer; }
+  </style>
+  <script>
+    // هنا نكتب الباسوردات مع الصفحات اللي تروح لها
+    const passwords = {
+      "1": "o.html",
+      "H": "u.html",
+      "secret": "page3.html",
+      "fuck": "page4.html"
+    };
+
+    function checkPassword() {
+      const userInput = document.getElementById("pass").value;
+      
+      if (passwords[userInput]) {
+        // لو الباسورد موجود في القائمة
+        window.location.href = passwords[userInput];
+      } else {
+        alert("try again")
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>enter password</h1>
+  <input type="password" id="pass" placeholder="password">
+  <button onclick="checkPassword()">enter</button>
+</body>
+</html>

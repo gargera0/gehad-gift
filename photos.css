@@ -482,9 +482,10 @@ box-shadow: 0px 3px 5px rgba(0, 0, 0, .3);
     display: flex;
     width: 360px;
     padding: 15px;
-    font-size: 20px;
+    font-size: 16px;
   }
 .back{
     display: block;
 
 }
+
